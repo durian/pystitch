@@ -15,7 +15,13 @@ import re
 #   python pystitch.py -z 6 -S 50 -N 60 -W 0 -E 15 -t 'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png'
 
 # Shading:
-#   python pystitch.py  -t 'https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png'
+#   python pystitch.py -t 'https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png'
+#
+# Google Earth:
+#  python pystitch.py -t 'http://mt.google.com/vt/lyrs=s&x={x}&y={y}&z={z}' -z10 -x GGLE -S 56 -W 12 -N 57 -E 15
+#
+# Google Maps:
+#  python pystitch.py -t 'http://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}' -z10 -x GGLM -S 56 -W 12 -N 57 -E 15
 
 parser = argparse.ArgumentParser()
 parser.add_argument( '-E', "--east",  type=float, default=13, help='East coordinate.' )
@@ -84,7 +90,7 @@ else:
     
 # Post process
 # convert IMG -colors 16 (-colorspace gray)  -normalize NEWIMG ->does not load.
-# for f in '*png'; do echo $f; mogrify -normalize $f;done
+# for f in *png; do echo $f; mogrify -normalize $f;done
 
 '''
 BITMAP_NAME     map06z10.png
@@ -107,16 +113,4 @@ print( map_name, map_map )
 
 '''
 https://mc.bbbike.org/mc/?num=2&mt0=mapnik&mt1=mapnik-bw
-
-python pystitch.py -S 53 -N 54 -W 11 -E 12  -t 'https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png' -z10 -x BW
-python pystitch.py -S 53 -N 54 -W 12 -E 13  -t 'https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png' -z10 -x BW
-python pystitch.py -S 53 -N 54 -W 13 -E 14  -t 'https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png' -z10 -x BW
-
-python pystitch.py -S 54 -N 55 -W 11 -E 12  -t 'https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png' -z10 -x BW
-python pystitch.py -S 54 -N 55 -W 12 -E 13  -t 'https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png' -z10 -x BW
-python pystitch.py -S 54 -N 55 -W 13 -E 14  -t 'https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png' -z10 -x BW
-
-python pystitch.py -S 55 -N 56 -W 11 -E 12  -t 'https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png' -z10 -x BW
-python pystitch.py -S 55 -N 56 -W 12 -E 13  -t 'https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png' -z10 -x BW
-python pystitch.py -S 55 -N 56 -W 13 -E 14  -t 'https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png' -z10 -x BW
 '''
