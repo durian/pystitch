@@ -18,10 +18,10 @@ import re
 #   python pystitch.py  -t 'https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png'
 
 parser = argparse.ArgumentParser()
-parser.add_argument( '-E', "--east",  type=int, default=13, help='East coordinate.' )
-parser.add_argument( '-N', "--north", type=int, default=57, help='North coordinate.' )
-parser.add_argument( '-S', "--south", type=int, default=56, help='South coordinate.' )
-parser.add_argument( '-W', "--west",  type=int, default=12, help='West coordinate.' )
+parser.add_argument( '-E', "--east",  type=float, default=13, help='East coordinate.' )
+parser.add_argument( '-N', "--north", type=float, default=57, help='North coordinate.' )
+parser.add_argument( '-S', "--south", type=float, default=56, help='South coordinate.' )
+parser.add_argument( '-W', "--west",  type=float, default=12, help='West coordinate.' )
 parser.add_argument( '-x', "--extra",  type=str, default=None, help='Extra string for map name.' )
 parser.add_argument( '-t', "--tiles", type=str, default="http://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
                      help='URL of tile server.' )
@@ -106,6 +106,8 @@ with open(map_map, "w") as f:
 print( map_name, map_map )
 
 '''
+https://mc.bbbike.org/mc/?num=2&mt0=mapnik&mt1=mapnik-bw
+
 python pystitch.py -S 53 -N 54 -W 11 -E 12  -t 'https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png' -z10 -x BW
 python pystitch.py -S 53 -N 54 -W 12 -E 13  -t 'https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png' -z10 -x BW
 python pystitch.py -S 53 -N 54 -W 13 -E 14  -t 'https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png' -z10 -x BW
