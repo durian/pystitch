@@ -8,18 +8,17 @@ import argparse
 from shlex import quote
 import re
 
+# Needs https://github.com/ericfischer/tile-stitch installed.
 # ./stitch -o map_55_12_56_13_z12.png  -- 55 12 56 13  12  http://a.tile.openstreetmap.org/{z}/{x}/{y}.png
 
 parser = argparse.ArgumentParser()
-#parser.add_argument( '-a', "--anon", action='store_true', default=False, help='Anonymous axes' )
-parser.add_argument( '-E', "--east",  type=int, default=13, help='This many days ago (14)' )
-parser.add_argument( '-N', "--north", type=int, default=57, help='This many days ago (14)' )
-parser.add_argument( '-S', "--south", type=int, default=56, help='This many days ago (14)' )
-parser.add_argument( '-W', "--west",  type=int, default=12, help='This many days ago (14)' )
+parser.add_argument( '-E', "--east",  type=int, default=13, help='East coordinate.' )
+parser.add_argument( '-N', "--north", type=int, default=57, help='North coordinate.' )
+parser.add_argument( '-S', "--south", type=int, default=56, help='South coordinate.' )
+parser.add_argument( '-W', "--west",  type=int, default=12, help='West coordinate.' )
 parser.add_argument( '-t', "--tiles", type=str, default="http://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                     help='Full date string' )
-parser.add_argument( '-z', "--zoom",  type=int, default=8, help='This many days ago (14)' )
-parser.add_argument( "--dry", action='store_true', default=False, help='Dry run' )
+                     help='URL of tile server.' )
+parser.add_argument( '-z', "--zoom",  type=int, default=8, help='Map zoom level' )
 args = parser.parse_args()
 
 def run_command(command):
@@ -66,6 +65,7 @@ print( res, png_w, png_h )
 # Post process
 # convert IMG -colors 16 (-colorspace gray)  -normalize NEWIMG ->does not load.
 # for f in '*png'; do echo $f; mogrify -normalize $f;done
+
 '''
 BITMAP_NAME     map06z10.png
 WIDTH          3787
